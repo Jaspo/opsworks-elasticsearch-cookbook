@@ -8,8 +8,8 @@ script "install_plugin_es_hq" do
 	not_if { File.exist?("#{node.elasticsearch[:dir]}/elasticsearch-#{node.elasticsearch[:version]}/plugins/HQ") }
 end
 
-elasticsearch_plugin 'cloud-aws' do
-  install_source   'elasticsearch/plugins/discovery-ec2'
+elasticsearch_plugin 'discovery-ec2' do
+  action :install
 end
 
 #notifies :restart, 'service[elasticsearch]' unless node.elasticsearch[:skip_restart]
